@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Auth, Hash;
+use App\Events\Birthday;
 
 class AuthController extends Controller
 {
@@ -112,8 +113,10 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function birthday()
     {
-        //
+        //echo "404";
+        $data=['title' => 'Birthday List'];
+        event(new Birthday($data));
     }
 }
